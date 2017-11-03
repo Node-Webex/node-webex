@@ -1,0 +1,38 @@
+{
+  "name": "node-webex",
+  "version": "0.0.1",
+  "description": "WebEx API Library for Node JS",
+  "main": "index.js",
+  "directories": {
+    "example": "example",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmarus/node-webex.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nmarus/node-webex/issues"
+  },
+  "homepage": "https://github.com/nmarus/node-webex#readme",
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "request": "^2.83.0",
+    "when": "^3.7.8",
+    "xml2js": "^0.4.19"
+  }
+}
