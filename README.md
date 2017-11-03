@@ -1,26 +1,48 @@
-# node-webex (experimental/alpha/wip/ymmv/use-at-your-own-risk)
+# node-webex
 
+_**(experimental/alpha/wip/ymmv/use-at-your-own-risk)**_
+
+```javascript
+const Webex = require('../');
+
+const webex = new Webex({
+  siteName: 'mysite', // as in the portion of your webex url if it was mysite.example.com
+  webExID: 'myuser@example.com',
+  password: 's3cret',
+});
+
+webex.on('request', rOpts => console.log(JSON.stringify(rOpts.body, null, 2)));
+
+webex.user.get({ webExId: 'someone@example.com' })
+  .then(res => console.log(JSON.stringify(res, null, 2)))
+  .catch(err => console.error(err));
 ```
+
+**Installation/Dev/Test**
+
+```bash
 git clone https://github.com/nmarus/node-webex
 cd node-webex
 npm install
 cd example
-node create-user
+# edit get-user.js with your connection params
+node get-user.js
 ```
 
 **Notes:**
 
+* **(New)** API endpoints for each API Service have been merged into a single file. For example, the WebEx UserService endpoints are defined in lib/api/user-service.js and are exposed under `webex.user` (i.e. `webex.user.get()`)
+* **(New)** Request logic is now tested for `webex.user.get()`. As such, request logic is now live in most recent update.
+* **(New)** Alternate setup using single file found in `example/get-user.js`
 * NOT on npmjs.org. You will need to clone repo and follow instructions above to run this module locally.
-* Request logic is commented out in lib/webex
-* Only a few endpoints are available
-* See example folder for other info
+* Only a few endpoints are available...
+* See example folder for other info.
 
 **Testing / Possible issues:**
 
 * The function `js2xml` in lib/webex.js can handle strings and objects only. This function is used to to recursively create the markup tagged versions of the js objects used to define the contents of the `securityContext` and `bodyContent` portions of the XML request. As other WebEx XML API methods are added, this function may have to be tweaked. See section below on it's current operation.
-* Totally untested... hence why request logic is commented out. Hope to test soon, curious on feedback for anyone else who has tested.
-* Little to no error handling (yet) so check/doublecheck everything when making this live.
-* Response processing untested (Have I mentioned that this is untested?). Response processing is done through the `xml2js.parseString()` to parse the response.body to a js object. *(Console log output for successful requests/responses appreciated.)* Logic in the 2 API endpoing GetUuer/CreateUser allows options to be passed to change the way xml2js handles the parsing should it need to be adjusted. See https://www.npmjs.com/package/xml2js. This can eventually be unique to the api call, globally defined (assuming that xml responses are close enough), or specified by the user (not an ideal solution).
+* Little to no error handling (yet) so check/double-check everything.
+* Response processor returns a js object version of the XML response. This can withstand a bot more post processing to eliminate some of the enclosing objects. 
 
 **js2xml Example:**
 
@@ -53,7 +75,6 @@ Running this through js2xml function will create the following XML that is inser
 </privilege>
 <active>ACTIVATED</active>
 ```
-
 
 ## License
 

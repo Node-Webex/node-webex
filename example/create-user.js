@@ -15,6 +15,8 @@ const user = {
   active: 'ACTIVATED',
 };
 
-webex.createUser(user)
-  .then(res => console.log(res))
+webex.on('request', rOpts => console.log(JSON.stringify(rOpts.body, null, 2)));
+
+webex.user.create(user)
+  .then(res => console.log(JSON.stringify(res, null, 2)))
   .catch(err => console.error(err));

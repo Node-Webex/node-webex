@@ -1,12 +1,13 @@
 const Webex = require('../');
-const config = require('./config');
 
-const webex = new Webex(config);
+const webex = new Webex({
+  siteName: 'mysite', // as in the portion of your webex url if it was mysite.example.com
+  webExID: 'myuser@example.com',
+  password: 's3cret',
+});
 
-const user = {
-  webExId: 'username',
-};
+webex.on('request', rOpts => console.log(JSON.stringify(rOpts.body, null, 2)));
 
-webex.getUser(user)
-  .then(res => console.log(res))
+webex.user.get({ webExId: 'someone@example.com' })
+  .then(res => console.log(JSON.stringify(res, null, 2)))
   .catch(err => console.error(err));
