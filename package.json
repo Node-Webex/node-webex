@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nmarus/node-webex.git"
+    "url": "git+https://github.com/Node-Webex/node-webex.git"
   },
   "author": "Nicholas Marus <nmarus@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nmarus/node-webex/issues"
+    "url": "https://github.com/Node-Webex/node-webex/issues"
   },
-  "homepage": "https://github.com/nmarus/node-webex#readme",
+  "homepage": "https://github.com/Node-Webex/node-webex#readme",
   "devDependencies": {
     "babel-eslint": "^8.0.1",
     "babel-preset-env": "^1.6.1",
