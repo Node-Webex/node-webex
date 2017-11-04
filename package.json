@@ -1,6 +1,6 @@
 {
   "name": "node-webex",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "WebEx API Library for Node JS",
   "main": "index.js",
   "directories": {
