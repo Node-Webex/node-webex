@@ -1,9 +1,11 @@
 # node-webex
 
-_**(experimental/alpha/wip/ymmv/use-at-your-own-risk)**_
+**Cisco WebEx API library for Node JS**
+
+_**Note: This is an experimental, incomplete, work in progress. This should not be used in production till 1.0.0 is released.**_
 
 ```javascript
-const Webex = require('../');
+const Webex = require('node-webex');
 
 const webex = new Webex({
   siteName: 'mysite', // as in the portion of your webex url if it was mysite.example.com
@@ -18,7 +20,7 @@ webex.user.get({ webExId: 'someone@example.com' })
   .catch(err => console.error(err));
 ```
 
-**Installation/Dev/Test**
+**Installation**
 
 ```bash
 git clone https://github.com/nmarus/node-webex
@@ -29,24 +31,9 @@ cd example
 node get-user.js
 ```
 
-**Notes:**
+**js2xml Notes:**
 
-* **(New)** API endpoints for each API Service have been merged into a single file. For example, the WebEx UserService endpoints are defined in lib/api/user-service.js and are exposed under `webex.user` (i.e. `webex.user.get()`)
-* **(New)** Request logic is now tested for `webex.user.get()`. As such, request logic is now live in most recent update.
-* **(New)** Alternate setup using single file found in `example/get-user.js`
-* NOT on npmjs.org. You will need to clone repo and follow instructions above to run this module locally.
-* Only a few endpoints are available...
-* See example folder for other info.
-
-**Testing / Possible issues:**
-
-* The function `js2xml` in lib/webex.js can handle strings and objects only. This function is used to to recursively create the markup tagged versions of the js objects used to define the contents of the `securityContext` and `bodyContent` portions of the XML request. As other WebEx XML API methods are added, this function may have to be tweaked. See section below on it's current operation.
-* Little to no error handling (yet) so check/double-check everything.
-* Response processor returns a js object version of the XML response. This can withstand a bot more post processing to eliminate some of the enclosing objects. 
-
-**js2xml Example:**
-
-Take the following example object...
+The function `js2xml` in lib/webex.js is used to to recursively create the markup of the js objects used to define the contents of the `securityContext` and `bodyContent` portions of the XML request. As other WebEx XML API methods are added, this function may have to be tweaked. An example of this logic is below.
 
 ```javascript
 const user = {
@@ -62,7 +49,7 @@ const user = {
 };
 ```
 
-Running this through js2xml function will create the following XML that is inserted inside the `bodyContent` tag:
+Running this through the js2xml function will create the following XML that is inserted inside the `bodyContent` tag:
 
 ```xml
 <firstName>fname</firstName>
@@ -80,7 +67,7 @@ Running this through js2xml function will create the following XML that is inser
 
 The MIT License (MIT)
 
-Copyright (c) 2016-2018
+Copyright (c) 2017-2018
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

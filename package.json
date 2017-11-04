@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/nmarus/node-webex.git"
   },
-  "author": "",
+  "author": "Nicholas Marus <nmarus@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nmarus/node-webex/issues"
